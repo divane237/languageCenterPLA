@@ -11,13 +11,10 @@ import { authSchema } from "@/utils/utils";
 import { options } from "@/constants";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
-import { LoginWithEmail, signUpNewUser } from "@/lib/actions";
-import { useRouter } from "next/navigation";
+import { signIn, signUp } from "@/lib/actions";
 
 const AuthForm = ({ type }) => {
   const [isLoading, setIsLoading] = useState(false);
-
-  const authRoute = useRouter();
 
   const formSchema = authSchema(type);
 
@@ -25,44 +22,40 @@ const AuthForm = ({ type }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "welfloriclaude@gmail.com",
+      password: "divane",
       ...(type === "sign-up" && {
-        firstName: "",
-        lastName: "",
-        address: "",
-        dateOfBirth: "",
-        identificationDocument: "",
-        idNumber: "",
+        firstName: "Divane",
+        lastName: "Jeugo",
+        address: "Mabanda",
+        dateOfBirth: "1999-06-10",
+        identificationDocument: "passport",
+        idNumber: "123434",
       }),
     },
   });
 
   // 2. Define a submit handler.
   const onSubmit = async (data) => {
+    setIsLoading(true);
     // ✅ This will be type-safe and validated.
-    console.log("Form submitted");
+    console.log(data);
 
     // Sign Up
     if (type === "sign-up") {
-      const result = await signUpNewUser(data);
-
-      const { error } = JSON.parse(result);
-
-      if (error) {
-        console.log(error.message);
-        console.log("Error occurred");
-      } else {
-        console.log("Successfully register");
-        authRoute.push("/dashboard");
-      }
+      // signUp()
+      await signUp(data);
+      console.log("signUp function executed");
     }
     // Sign In
 
     if (type === "sign-in") {
-      // Sign In
-      await LoginWithEmail(data);
+      // SignIn()
+      await signIn(data);
+      console.log("signIn function executed");
     }
+
+    setIsLoading(false);
   };
 
   return (

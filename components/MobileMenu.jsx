@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
-
-import Logo from "./Logo";
 import Link from "next/link";
 import { navMenu } from "@/constants";
 import { usePathname } from "next/navigation";
-import LargeScreenNavLink from "./LargeScreenNavLink";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import MobileNavLink from "./MobileNavLink";
 
 const MobileMenu = () => {
-  const [showClasses, setShowClasses] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [toggleLinks, setToggleLinks] = useState(false);

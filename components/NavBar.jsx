@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import LargeScreenNavLink from "./LargeScreenNavLink";
 
 const NavBar = () => {
@@ -72,7 +72,7 @@ const NavBar = () => {
                       height={24}
                       width={24}
                       alt="chevron-up"
-                      className="group-hover:rotate-180 transition-all duration-100 delay-100"
+                      className="group-hover:rotate-180 transition-all duration-100 delay-100 w-[24px] h-[24px]"
                     />
                   </div>
 

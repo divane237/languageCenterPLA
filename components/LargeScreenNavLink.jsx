@@ -1,4 +1,4 @@
-import { truncateStringAtFirstFullStop } from "@/lib/utils";
+import { truncateStringAtFirstFullStop } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
