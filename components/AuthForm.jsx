@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -11,11 +11,12 @@ import { authSchema } from "@/utils/utils";
 import { options } from "@/constants";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
-import { LoginWithEmail, signUpNewUser } from "@/lib/actions";
+import { LoginWithEmail, signUpNewUser } from "@/lib/actions/auth";
 import { useRouter } from "next/navigation";
 
 const AuthForm = ({ type }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const [authError, setAuthError] = useState("");
 
   const authRoute = useRouter();
 
@@ -39,30 +40,37 @@ const AuthForm = ({ type }) => {
   });
 
   // 2. Define a submit handler.
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     // ✅ This will be type-safe and validated.
-    console.log("Form submitted");
 
-    // Sign Up
-    if (type === "sign-up") {
-      const result = await signUpNewUser(data);
+    setAuthError((prevError) => (prevError = ""));
 
-      const { error } = JSON.parse(result);
+    startTransition(async () => {
+      // Sign Up
 
-      if (error) {
-        console.log(error.message);
-        console.log("Error occurred");
-      } else {
-        console.log("Successfully register");
-        authRoute.push("/dashboard");
+      if (type === "sign-up") {
+        const result = await signUpNewUser(data);
+        console.log(result);
+
+        const { error } = JSON.parse(result);
+
+        if (error) {
+          console.log(error.message);
+          setAuthError(error);
+        } else {
+          authRoute.push("/dashboard");
+        }
       }
-    }
-    // Sign In
 
-    if (type === "sign-in") {
       // Sign In
-      await LoginWithEmail(data);
-    }
+
+      if (type === "sign-in") {
+        const result = await LoginWithEmail(data);
+
+        setAuthError((prevError) => (prevError = result));
+        result === "Email or password is incorrect" && form.reset();
+      }
+    });
   };
 
   return (
@@ -80,12 +88,14 @@ const AuthForm = ({ type }) => {
                   name="firstName"
                   label="First Name"
                   placeholder="Peter"
+                  disabled={isPending}
                 />
                 <CustomInput
                   control={form.control}
                   name="lastName"
                   label="Last Name"
                   placeholder="Johnson"
+                  disabled={isPending}
                 />
               </div>
 
@@ -95,6 +105,7 @@ const AuthForm = ({ type }) => {
                   name="address"
                   label="Address"
                   placeholder="Carrefour Wamba Mabanda, Bonaberi"
+                  disabled={isPending}
                 />
 
                 <CustomInput
@@ -102,6 +113,7 @@ const AuthForm = ({ type }) => {
                   name="dateOfBirth"
                   label="Date of Birth"
                   placeholder="YYYY-MM-DD"
+                  disabled={isPending}
                 />
               </div>
 
@@ -117,6 +129,7 @@ const AuthForm = ({ type }) => {
                   name="idNumber"
                   label="ID No"
                   placeholder="AA4343..."
+                  disabled={isPending}
                 />
               </div>
             </>
@@ -128,22 +141,27 @@ const AuthForm = ({ type }) => {
               name="email"
               label="Email"
               placeholder="abc123@gmail.com"
+              disabled={isPending}
             />
             <CustomInput
               control={form.control}
               name="password"
               label="Password"
               placeholder=""
+              disabled={isPending}
             />
           </div>
+          <p className="text-red-600 text-xs text-center py-1.5">{authError}</p>
+
+          {/* SignIn & SignUp error display */}
 
           <div className="mx-4">
             <Button
               type="submit"
               className="w-full text-xs sm:text-sm rounded-lg"
-              disabled={isLoading}
+              disabled={isPending}
             >
-              {isLoading ? (
+              {isPending ? (
                 <Loader2 className="animate-spin" />
               ) : type === "sign-up" ? (
                 "Sign Up"
@@ -176,7 +194,7 @@ const AuthForm = ({ type }) => {
 
         {type === "sign-in" && (
           <Link
-            href="/sign-in"
+            href="/reset-password"
             className="hover:text-sky-400 active:text-sky-600"
           >
             Forgot your password ?{" "}

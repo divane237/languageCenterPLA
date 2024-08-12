@@ -12,6 +12,7 @@ const CustomInput = ({
   control,
   placeholder = "Default Placeholder",
   label,
+  disabled = false,
 }) => {
   return (
     <FormField
@@ -28,6 +29,7 @@ const CustomInput = ({
               className={`focus:ring-2 rounded-xl transition-all duration-200`}
               placeholder={placeholder}
               {...field}
+              disabled={disabled}
             />
           </FormControl>
           <FormMessage />
