@@ -26,11 +26,11 @@ export const authSchema = (type) =>
     firstName:
       type === "sign-in"
         ? z.string().optional()
-        : z.string().min(2, { message: "Must be at least 3 character" }),
+        : z.string().min(3, { message: "Must be at least 3 character" }),
     lastName:
       type === "sign-in"
         ? z.string().optional()
-        : z.string().min(2, { message: "Must be at least 3 character" }),
+        : z.string().min(3, { message: "Must be at least 3 character" }),
     address: type === "sign-in" ? z.string().optional() : z.string().max(60),
     dateOfBirth: type === "sign-in" ? z.string().optional() : z.string().date(),
     identificationDocument:

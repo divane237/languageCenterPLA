@@ -2,7 +2,7 @@ export const navMenu = [
   {
     title: "Home",
     title2: "",
-    route: "/home",
+    route: "/",
     special: false,
   },
   {
@@ -62,3 +62,13 @@ export const options = [
     value: "driverLicense",
   },
 ];
+
+export const userData = {
+  firstName: "Divane",
+  lastName: "Djoumetio Jeugo",
+  email: "didjoumetio@gmail.com",
+  address: "Mvog gada, Yaounde, CE",
+  country: "Cameroon",
+  document: "ID Card",
+  idNumber: "123456",
+};

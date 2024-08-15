@@ -3,8 +3,8 @@
 import React, { useTransition } from "react";
 import { Button } from "./ui/button";
 import { Logout } from "@/lib/actions/auth";
-import { Loader2 } from "lucide-react";
-const SignOut = () => {
+import { Loader2, LogOut } from "lucide-react";
+const SignOut = ({ label = "email@email.com" }) => {
   const [isPending, startTransition] = useTransition();
 
   function onSubmit() {
@@ -14,14 +14,20 @@ const SignOut = () => {
   }
 
   return (
-    <form action={onSubmit}>
-      <Button>
+    <form action={onSubmit} className="flex gap-2">
+      <Button className="bg-black/5 border-2 border-white">
         {isPending ? (
           <Loader2 className="animate-spin" />
         ) : (
-          <p className="m-1">Logout</p>
+          <div className="">
+            <LogOut />
+          </div>
         )}
       </Button>
+      <div>
+        <p>Logout</p>
+        <span className="text-[0.6rem] font-medium font-serif">{label}</span>
+      </div>
     </form>
   );
 };
