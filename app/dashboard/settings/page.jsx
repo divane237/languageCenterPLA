@@ -1,10 +1,10 @@
 import React from "react";
-const Results = () => {
+const Settings = () => {
   return (
     <div className="w-screen h-[95dvh]  md:h-[100dvh] md:w-[80%] lg:w-full bg-black text-white/80">
-      Results
+      Settings
     </div>
   );
 };
 
-export default Results;
+export default Settings;

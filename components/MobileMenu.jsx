@@ -14,7 +14,7 @@ const MobileMenu = () => {
   let isActive;
 
   return (
-    <div className="md:hidden flex items-center">
+    <div className="md:hidden flex items-center z-20">
       {/* Menu Icon */}
       <button
         className="focus:ring-2 rounded-md border-none focus:outline-none"

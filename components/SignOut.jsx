@@ -4,6 +4,7 @@ import React, { useTransition } from "react";
 import { Button } from "./ui/button";
 import { Logout } from "@/lib/actions/auth";
 import { Loader2, LogOut } from "lucide-react";
+
 const SignOut = ({ label = "email@email.com" }) => {
   const [isPending, startTransition] = useTransition();
 

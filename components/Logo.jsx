@@ -18,7 +18,7 @@ const Logo = ({ className }) => {
         width={40}
         priority
       />{" "}
-      <p className="text-[#44699ad7] hover:text-[#44699ad7]">PLA</p>
+      <p className={cn("text-[#44699ad7] hover:text-[#44699ad7]")}>PLA</p>
     </Link>
   );
 };

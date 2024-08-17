@@ -1,3 +1,8 @@
+import EnglandFlag from "@/components/EnglandFlag";
+import FranceFlag from "@/components/FranceFlag";
+import GermanFlag from "@/components/GermanFlag";
+import { BookOpenCheck, Settings, UserRound } from "lucide-react";
+
 export const navMenu = [
   {
     title: "Home",
@@ -71,4 +76,38 @@ export const userData = {
   country: "Cameroon",
   document: "ID Card",
   idNumber: "123456",
+  dateOfBirth: "1995-06-21",
 };
+
+export const dashboardMenuList = [
+  {
+    title: "Profile",
+    logo: <UserRound size={28} strokeWidth={1.5} />,
+    route: "/dashboard",
+  },
+  {
+    title: "English",
+    logo: <EnglandFlag />,
+    route: "/dashboard/english",
+  },
+  {
+    title: "French",
+    logo: <FranceFlag />,
+    route: "/dashboard/french",
+  },
+  {
+    title: "German",
+    logo: <GermanFlag />,
+    route: "/dashboard/german",
+  },
+  {
+    title: "Exam Results",
+    logo: <BookOpenCheck size={28} strokeWidth={1.5} />,
+    route: "/dashboard/results",
+  },
+  {
+    title: "Settings",
+    logo: <Settings />,
+    route: "/dashboard/settings",
+  },
+];
