@@ -10,8 +10,10 @@ import MobileMenu from "./MobileMenu";
 import Image from "next/image";
 import { cn } from "@/utils/utils";
 import LargeScreenNavLink from "./LargeScreenNavLink";
+import { User, User2 } from "lucide-react";
 
-const NavBar = () => {
+const NavBar = ({ session }) => {
+  console.log(session);
   const pathname = usePathname();
   let isActive;
 
@@ -34,7 +36,7 @@ const NavBar = () => {
 
       {/* Start of MENU | CLASSES | ABOUT nav links  */}
 
-      <ul className="max-md:hidden flex gap-x-1 items-center">
+      <ul className="max-md:hidden flex gap-x-3 items-center">
         {navMenu.map((menu, i) => {
           return (
             <li key={menu.title} className="rounded-md">
@@ -64,7 +66,7 @@ const NavBar = () => {
                   {/* Name & Chevron  */}
                   <div
                     tabIndex={5}
-                    className="flex hover:cursor-pointer w-full px-2 gap-x-4"
+                    className="flex hover:cursor-pointer w-full px-2 gap-x-4 before:content-[''] before:w-full before:absolute relative before:h-[45px] before:right-0 before:px-8 before:z-[-1] hover:before:z-[50]"
                   >
                     <p className="">{menu.title}</p>
                     <Image
@@ -72,12 +74,12 @@ const NavBar = () => {
                       height={24}
                       width={24}
                       alt="chevron-up"
-                      className="group-hover:rotate-180 transition-all duration-100 delay-100 w-[24px] h-[24px]"
+                      className="group-hover:rotate-180 delay-100 w-[24px] h-[24px]"
                     />
                   </div>
 
                   {/* Menu list for classes */}
-                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2 flex flex-col h-0 w-0 overflow-hidden group-hover:w-[400px] group-hover:h-[324px] transition-all duration-300 shadow-xl delay-300">
+                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2 flex flex-col h-0  group-hover:w-[400px] group-hover:h-[324px] transition-all shadow-xl delay-100 overflow-hidden group-hover:border-2">
                     <LargeScreenNavLink
                       subTitle={menu.english.subTitle}
                       description={menu.english.description}
@@ -102,12 +104,27 @@ const NavBar = () => {
             </li>
           );
         })}
+
+        {/* Sign In logo */}
+
+        <li className="mx-1">
+          {session ? (
+            <Link
+              href={"/dashboard"}
+              className="hover:border-b-2 hover:border-colorful-700 hover:text-black focus:border-colorful-700 focus:text-black focus:outline-none focus:border-b-2 block rounded-md"
+            >
+              <User className="mx-2 my-1" />
+            </Link>
+          ) : (
+            <Link href={"/sign-in"}>Sign In</Link>
+          )}
+        </li>
       </ul>
 
       {/* End of MENU | CLASSES | ABOUT nav links */}
 
       {/* Mobile Menu */}
-      <MobileMenu />
+      <MobileMenu session={session} />
     </div>
   );
 };

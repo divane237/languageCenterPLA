@@ -1,10 +1,13 @@
 import NavBar from "@/components/NavBar";
+import { getUserSession } from "@/lib/actions/user";
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+  const results = await getUserSession();
+  const { session, message } = JSON.parse(results);
+
   return (
-    // <main>
     <main className="">
-      <NavBar />
+      <NavBar session={session} />
 
       {children}
     </main>

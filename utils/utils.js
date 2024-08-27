@@ -46,3 +46,10 @@ export const authSchema = (type) =>
     email: z.string().email({ message: "Invalid email address." }),
     password: z.string().min(5, { message: "At least 5 characters." }),
   });
+
+function capitalizeEachWord(string) {
+  return string
+    .split(" ") // Split the string into an array of words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter of each word
+    .join(" "); // Join the array back into a string
+}

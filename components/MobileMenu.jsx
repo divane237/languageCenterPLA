@@ -5,8 +5,9 @@ import { navMenu } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
 import MobileNavLink from "./MobileNavLink";
+import { LogIn, User } from "lucide-react";
 
-const MobileMenu = () => {
+const MobileMenu = ({ session }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [toggleLinks, setToggleLinks] = useState(false);
@@ -14,38 +15,33 @@ const MobileMenu = () => {
   let isActive;
 
   return (
-    <div className="md:hidden flex items-center z-20">
+    <div className="md:hidden flex items-center z-20 ">
       {/* Menu Icon */}
       <button
-        className="focus:ring-2 rounded-md border-none focus:outline-none"
+        className="focus:ring-2 rounded-md px-3 py-2 focus:outline-none mr-2 w-10 h-10 ml-auto hover:opacity-80 border-none"
         id="menuIcon"
         onClick={(e) => {
-          console.log("Menu icon clicked ", e.type === "click");
           if (e.type === "click") {
             setAnimation(true);
             setMobileMenu(true);
           }
         }}
       >
-        <Image
-          src="icons/menu.svg"
-          alt="menu-icon"
-          height={30}
-          width={30}
-          className="border-red-400"
-        />
+        <div className="relative w-3 h-0.5 bg-gray-800 right-1/2 translate-x-1/2 before:absolute before:content-[''] before:w-3 before:h-0.5 before:bg-gray-800 before:transition-transform before:duration-300 before:-translate-y-2 after:absolute after:content-[''] after:w-3 after:h-0.5 after:bg-gray-800 after:transition-transform after:duration-300 after:translate-y-2"></div>
       </button>
 
       {/* Mobile Menu */}
+
       {mobileMenu && (
         <div
           className={`${
             animation ? "animate-menuEntry" : "animate-menuExit"
-          } absolute top-0 backdrop-blur-sm h-[100dvh] w-[100vw] left-full text-white flex`}
+          } fixed top-0 backdrop-blur-sm w-screen left-full text-white flex h-screen`}
           onAnimationEnd={() => {
             if (!animation) setMobileMenu(false);
           }}
         >
+          {/* Left side cancel button */}
           <div
             className="w-[25vw] backdrop-blur-sm text-black"
             onClick={(e) => {
@@ -59,6 +55,7 @@ const MobileMenu = () => {
             </button>
           </div>
 
+          {/* Right side menu links */}
           <div className="bg-colorful-600 w-[75vw] text-black font-semibold text-sm">
             <ul className="flex flex-col items-center w-full">
               {navMenu.map((menu) => {
@@ -68,7 +65,7 @@ const MobileMenu = () => {
                       <Link
                         href={menu.route}
                         className={cn(
-                          "py-3 block",
+                          "py-3 hover:bg-colorful-700/60 flex justify-center gap-x-2  items-center rounded-sm",
                           (isActive =
                             pathname === menu.route &&
                             "bg-colorful-700 text-white")
@@ -77,14 +74,12 @@ const MobileMenu = () => {
                           setMobileMenu(false);
                         }}
                       >
-                        <p>
-                          {menu.title}
-                          {` ${menu?.title2}`}
-                        </p>
+                        <span>{menu.logo}</span>
+                        <p>{menu.title}</p>
                       </Link>
                     ) : (
+                      //Title
                       <div className="relative">
-                        {/* Title */}
                         <div
                           className={cn(
                             "flex gap-x-3 justify-center py-3 hover:cursor-pointer",
@@ -95,20 +90,19 @@ const MobileMenu = () => {
                               "bg-colorful-700 text-white"
                           )}
                           onClick={() => {
-                            console.log("Toggle");
                             setToggleLinks(!toggleLinks);
                           }}
                         >
+                          <span>{menu.logo}</span>
                           <p className="text-sm">Classes</p>
                           <Image
                             src="/icons/chevron-up.svg"
                             height={20}
                             width={20}
                             alt="chevron-up"
-                            className=""
+                            className={`${toggleLinks ? "rotate-180" : ""}`}
                           />
                         </div>
-
                         {/* Links */}
                         <div
                           className={`${
@@ -139,6 +133,26 @@ const MobileMenu = () => {
                   </li>
                 );
               })}
+
+              <li className="mx-1 w-full flex justify-center">
+                {session ? (
+                  <Link
+                    href={"/dashboard"}
+                    className="py-3 hover:bg-colorful-700/60 flex justify-center gap-x-2  items-center rounded-sm w-full"
+                  >
+                    <User />
+                    <p>Dashboard</p>
+                  </Link>
+                ) : (
+                  <Link
+                    href={"/sign-in"}
+                    className="py-3 hover:bg-colorful-700/60 flex justify-center gap-x-2  items-center rounded-sm w-full"
+                  >
+                    <LogIn />
+                    <p>Login</p>
+                  </Link>
+                )}
+              </li>
             </ul>
 
             <div className="absolute bottom-0 mb-4 text-center">

@@ -1,18 +1,28 @@
 import EnglandFlag from "@/components/EnglandFlag";
 import FranceFlag from "@/components/FranceFlag";
 import GermanFlag from "@/components/GermanFlag";
-import { BookOpenCheck, Settings, UserRound } from "lucide-react";
+import {
+  BookOpenCheck,
+  Home,
+  Languages,
+  LogIn,
+  Notebook,
+  Settings,
+  User,
+  UserRound,
+} from "lucide-react";
 
 export const navMenu = [
   {
     title: "Home",
-    title2: "",
+
     route: "/",
     special: false,
+    logo: <Home />,
   },
   {
     title: "Classes",
-    title2: "",
+    title1: "",
     route: ["/english", "/french", "/german"],
     english: {
       subTitle: "English Classes",
@@ -37,34 +47,28 @@ export const navMenu = [
     },
 
     special: true,
+    logo: <Languages />,
   },
   {
     title: "About Us",
-    title2: "",
     route: "/about",
     special: false,
-  },
-
-  {
-    title: "Sign In",
-    title2: "/ Sign Up",
-    route: "/sign-in",
-    special: false,
+    logo: <Notebook />,
   },
 ];
 
 export const options = [
   {
     name: "Passport",
-    value: "passport",
+    value: "Passport",
   },
   {
     name: "National ID",
-    value: "nationalId",
+    value: "National ID",
   },
   {
     name: "Driver's License",
-    value: "driverLicense",
+    value: "Driver License",
   },
 ];
 
