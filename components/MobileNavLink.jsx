@@ -5,15 +5,15 @@ const MobileNavLink = ({ route, imageSource, subTitle }) => {
   return (
     <Link
       href={route}
-      className="flex gap-x-3 justify-center items-center hover:bg-colorful-700/60"
+      className="flex gap-x-3 justify-center items-center hover:bg-colorful-700/60 rounded-sm"
     >
       <p className="text-xs">{subTitle}</p>
       <Image
         src={imageSource}
-        height={40}
-        width={40}
+        height={0}
+        width={0}
+        className="w-28 h-auto"
         alt={subTitle}
-        className="h-[60px] w-[60px]"
       />
     </Link>
   );

@@ -72,17 +72,6 @@ export const options = [
   },
 ];
 
-export const userData = {
-  firstName: "Divane",
-  lastName: "Djoumetio Jeugo",
-  email: "didjoumetio@gmail.com",
-  address: "Mvog gada, Yaounde, CE",
-  country: "Cameroon",
-  document: "ID Card",
-  idNumber: "123456",
-  dateOfBirth: "1995-06-21",
-};
-
 export const dashboardMenuList = [
   {
     title: "Profile",
@@ -91,17 +80,17 @@ export const dashboardMenuList = [
   },
   {
     title: "English",
-    logo: <EnglandFlag />,
+    logo: <EnglandFlag size={28} strokeWidth={1.5} />,
     route: "/dashboard/english",
   },
   {
     title: "French",
-    logo: <FranceFlag />,
+    logo: <FranceFlag size={28} strokeWidth={1.5} />,
     route: "/dashboard/french",
   },
   {
     title: "German",
-    logo: <GermanFlag />,
+    logo: <GermanFlag size={28} strokeWidth={1.5} />,
     route: "/dashboard/german",
   },
   {
@@ -111,7 +100,7 @@ export const dashboardMenuList = [
   },
   {
     title: "Settings",
-    logo: <Settings />,
+    logo: <Settings size={28} strokeWidth={1.5} />,
     route: "/dashboard/settings",
   },
 ];

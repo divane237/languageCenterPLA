@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
 import MobileNavLink from "./MobileNavLink";
 import { LogIn, User } from "lucide-react";
+import Footer from "./Footer";
 
 const MobileMenu = ({ session }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -82,7 +83,7 @@ const MobileMenu = ({ session }) => {
                       <div className="relative">
                         <div
                           className={cn(
-                            "flex gap-x-3 justify-center py-3 hover:cursor-pointer",
+                            "flex gap-x-3 justify-center py-3 hover:cursor-pointer rounded-sm",
                             (isActive =
                               pathname === menu.route[0] ||
                               pathname === menu.route[1] ||
@@ -97,10 +98,12 @@ const MobileMenu = ({ session }) => {
                           <p className="text-sm">Classes</p>
                           <Image
                             src="/icons/chevron-up.svg"
-                            height={20}
-                            width={20}
+                            height={0}
+                            width={0}
                             alt="chevron-up"
-                            className={`${toggleLinks ? "rotate-180" : ""}`}
+                            className={`${
+                              toggleLinks ? "rotate-180" : ""
+                            } w-5 h-auto`}
                           />
                         </div>
                         {/* Links */}
@@ -134,6 +137,7 @@ const MobileMenu = ({ session }) => {
                 );
               })}
 
+              {/* Sign In / dashboard link */}
               <li className="mx-1 w-full flex justify-center">
                 {session ? (
                   <Link
@@ -155,8 +159,8 @@ const MobileMenu = ({ session }) => {
               </li>
             </ul>
 
-            <div className="absolute bottom-0 mb-4 text-center">
-              <p>Footer</p>
+            <div className="absolute bottom-0 mb-2 text-center">
+              <Footer />
             </div>
           </div>
         </div>

@@ -71,15 +71,15 @@ const NavBar = ({ session }) => {
                     <p className="">{menu.title}</p>
                     <Image
                       src="/icons/chevron-up.svg"
-                      height={24}
-                      width={24}
+                      height={0}
+                      width={0}
                       alt="chevron-up"
-                      className="group-hover:rotate-180 delay-100 w-[24px] h-[24px]"
+                      className="group-hover:rotate-180 delay-100 w-5 h-auto"
                     />
                   </div>
 
                   {/* Menu list for classes */}
-                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2 flex flex-col h-0  group-hover:w-[400px] group-hover:h-[324px] transition-all shadow-xl delay-100 overflow-hidden group-hover:border-2">
+                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2 flex flex-col h-0 group-hover:w-[400px] group-hover:h-auto transition-all shadow-xl delay-100 overflow-hidden group-hover:border-2">
                     <LargeScreenNavLink
                       subTitle={menu.english.subTitle}
                       description={menu.english.description}
@@ -107,7 +107,7 @@ const NavBar = ({ session }) => {
 
         {/* Sign In logo */}
 
-        <li className="mx-1">
+        <li className="mx-1 text-base">
           {session ? (
             <Link
               href={"/dashboard"}
@@ -116,7 +116,12 @@ const NavBar = ({ session }) => {
               <User className="mx-2 my-1" />
             </Link>
           ) : (
-            <Link href={"/sign-in"}>Sign In</Link>
+            <Link
+              href={"/sign-in"}
+              className="hover:border-b-2 hover:border-colorful-700 hover:text-black focus:border-colorful-700 focus:text-black focus:outline-none focus:border-b-2 block rounded-md px-3 py-1"
+            >
+              Login
+            </Link>
           )}
         </li>
       </ul>

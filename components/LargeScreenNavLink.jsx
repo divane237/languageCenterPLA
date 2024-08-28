@@ -8,9 +8,9 @@ const LargeScreenNavLink = ({ subTitle, description, image, route }) => {
       <Image
         src={image}
         alt={`${subTitle}-image`}
-        width={150}
-        height={150}
-        className=""
+        height={0}
+        width={0}
+        className="w-28 h-auto"
       />
       <div className="px-2">
         <h1 className="whitespace-nowrap group-hover/link:font-semibold font-normal">
