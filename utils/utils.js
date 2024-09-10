@@ -20,6 +20,13 @@ export function truncateStringAtFirstFullStop(input) {
   return input;
 }
 
+function capitalizeEachWord(string) {
+  return string
+    .split(" ") // Split the string into an array of words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter of each word
+    .join(" "); // Join the array back into a string
+}
+
 export const authSchema = (type) =>
   z.object({
     // Sign Up
@@ -47,9 +54,13 @@ export const authSchema = (type) =>
     password: z.string().min(5, { message: "At least 5 characters." }),
   });
 
-function capitalizeEachWord(string) {
-  return string
-    .split(" ") // Split the string into an array of words
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter of each word
-    .join(" "); // Join the array back into a string
-}
+export const ieltsSchema = z.object({
+  type: z.string({ message: "Please select a specific exam" }),
+  initialLevel: z.string({ message: "Please select a level" }),
+  // currentLevel: z.string().optional(),
+  // online: z.boolean(),
+  tutor: z.string({ message: "Please select a tutor" }),
+  requiredScore: z.number({ message: "Input your required band/score!" }),
+  // bookedExam: z.boolean(),
+  examDate: z.date(),
+});

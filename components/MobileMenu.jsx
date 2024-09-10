@@ -16,7 +16,7 @@ const MobileMenu = ({ session }) => {
   let isActive;
 
   return (
-    <div className="md:hidden flex items-center z-20 ">
+    <div className="md:hidden flex items-center z-20">
       {/* Menu Icon */}
       <button
         className="focus:ring-2 rounded-md px-3 py-2 focus:outline-none mr-2 w-10 h-10 ml-auto hover:opacity-80 border-none"
@@ -57,7 +57,7 @@ const MobileMenu = ({ session }) => {
           </div>
 
           {/* Right side menu links */}
-          <div className="bg-colorful-600 w-[75vw] text-black font-semibold text-sm">
+          <div className="bg-colorful-600 w-[75vw] text-black font-semibold text-sm rounded-sm relative h-[100dvh]">
             <ul className="flex flex-col items-center w-full">
               {navMenu.map((menu) => {
                 return (
@@ -69,7 +69,7 @@ const MobileMenu = ({ session }) => {
                           "py-3 hover:bg-colorful-700/60 flex justify-center gap-x-2  items-center rounded-sm",
                           (isActive =
                             pathname === menu.route &&
-                            "bg-colorful-700 text-white")
+                            "bg-colorful-700 text-white hover:bg-colorful-700")
                         )}
                         onClick={() => {
                           setMobileMenu(false);
@@ -80,7 +80,7 @@ const MobileMenu = ({ session }) => {
                       </Link>
                     ) : (
                       //Title
-                      <div className="relative">
+                      <div className="relative h-auto">
                         <div
                           className={cn(
                             "flex gap-x-3 justify-center py-3 hover:cursor-pointer rounded-sm",
@@ -159,7 +159,7 @@ const MobileMenu = ({ session }) => {
               </li>
             </ul>
 
-            <div className="absolute bottom-0 mb-2 text-center">
+            <div className="absolute bottom-0 w-full">
               <Footer />
             </div>
           </div>

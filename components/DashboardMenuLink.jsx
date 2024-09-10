@@ -19,7 +19,9 @@ const DashboardMenuLink = ({
       href={href}
     >
       {children}
-      <span className="text-lg mx-2 font-medium">{title}</span>
+      <span className="text-lg mx-2 font-medium whitespace-nowrap">
+        {title}
+      </span>
     </Link>
   );
 };

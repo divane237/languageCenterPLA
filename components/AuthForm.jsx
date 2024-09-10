@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -13,34 +13,11 @@ import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import { LoginWithEmail, signUpNewUser } from "@/lib/actions/auth";
 import { useRouter } from "next/navigation";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 const AuthForm = ({ type }) => {
   const [isPending, startTransition] = useTransition();
   const [authError, setAuthError] = useState("");
   const authRoute = useRouter();
-
-  // USING useEffect hook to redirect to dashboard when locked in
-  // useEffect(() => {
-  //   async function check() {
-  //     try {
-  //       const supabase = createSupabaseBrowserClient(); // No need to await this
-  //       const { data, error } = await supabase.auth.getSession(); // Await the session retrieval
-  //       if (error) {
-  //         console.error("Error getting session:", error);
-  //       }
-
-  //       if (data.session) {
-  //         authRoute.push("/dashboard");
-  //         console.log(data);
-  //       }
-  //     } catch (error) {
-  //       console.error("Unexpected error:", error); // Catch any other unexpected errors
-  //     }
-  //   }
-
-  //   check();
-  // }, [authRoute]);
 
   //
   const formSchema = authSchema(type);
@@ -141,12 +118,13 @@ const AuthForm = ({ type }) => {
                 />
               </div>
 
-              <div className="sm:grid sm:grid-cols-2">
+              <div className="sm:grid sm:grid-cols-2 text-black">
                 <CustomFormSelectInput
                   control={form.control}
                   name="identificationDocument"
                   label="Identification"
                   options={options}
+                  placeholder="Select a document"
                 />
                 <CustomInput
                   control={form.control}

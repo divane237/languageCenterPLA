@@ -33,7 +33,7 @@ const MobileDashboard = ({ children }) => {
           }
         }}
       >
-        <div class="relative w-3 h-0.5 bg-gray-800 right-1/2 translate-x-1/2 before:absolute before:content-[''] before:w-3 before:h-0.5 before:bg-gray-800 before:transition-transform before:duration-300 before:-translate-y-2 after:absolute after:content-[''] after:w-3 after:h-0.5 after:bg-gray-800 after:transition-transform after:duration-300 after:translate-y-2"></div>
+        <div className="relative w-3 h-0.5 bg-gray-800 right-1/2 translate-x-1/2 before:absolute before:content-[''] before:w-3 before:h-0.5 before:bg-gray-800 before:transition-transform before:duration-300 before:-translate-y-2 after:absolute after:content-[''] after:w-3 after:h-0.5 after:bg-gray-800 after:transition-transform after:duration-300 after:translate-y-2"></div>
       </button>
       {/* Mobile Menu */}
 
@@ -86,7 +86,7 @@ const MobileDashboard = ({ children }) => {
             </ul>
 
             {/* SignOut */}
-            <div className="absolute bottom-0 my-5 mx-4 text-center py-2 px-1">
+            <div className="absolute bottom-0 my-2 mx-4 text-center py-2 px-1">
               {children}
             </div>
           </div>

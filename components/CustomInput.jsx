@@ -20,13 +20,13 @@ const CustomInput = ({
       name={name}
       render={({ field }) => (
         <FormItem className="px-4 py-1 text-center sm:text-left">
-          <FormLabel className="text-xs sm:text-sm font-bold">
+          <FormLabel className="text-xs md:text-sm font-bold">
             {label}
           </FormLabel>
           <FormControl>
             <Input
               type={name === "password" ? "password" : "text"}
-              className={`focus:ring-2 rounded-xl transition-all duration-200`}
+              className={`focus:ring-2 rounded-xl transition-all duration-200 text-xs md:text-sm text-black/70`}
               placeholder={placeholder}
               {...field}
               disabled={disabled}

@@ -9,7 +9,7 @@ const Layout = async ({ children }) => {
   const { student, error } = JSON.parse(result);
 
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row h-[100dvh]">
       <MobileDashboard>
         <SignOut label={student?.email} />
       </MobileDashboard>

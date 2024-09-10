@@ -12,7 +12,7 @@ const MobileNavLink = ({ route, imageSource, subTitle }) => {
         src={imageSource}
         height={0}
         width={0}
-        className="w-28 h-auto"
+        className="w-14 h-14"
         alt={subTitle}
       />
     </Link>

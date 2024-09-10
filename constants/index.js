@@ -104,3 +104,77 @@ export const dashboardMenuList = [
     route: "/dashboard/settings",
   },
 ];
+
+export const englishLanguageTests = [
+  {
+    title: "IELTS",
+    description:
+      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
+    image: "/images/english-ielts-logo.png",
+    route: "english/ielts",
+  },
+  {
+    title: "TOEFL",
+    description:
+      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
+    image: "/images/english-toefl-logo.png",
+    route: "english/toefl",
+  },
+  {
+    title: "CAMBRIDGE",
+    description:
+      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
+    image: "/images/english-cambridge-logo.png",
+    route: "english/cambridge",
+  },
+  {
+    title: "CELPIP",
+    description:
+      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
+    image: "/images/english-celpip-logo.png",
+    route: "english/celpip",
+  },
+];
+
+export const languageExamOptions = {
+  english: {
+    ielts: {
+      type: [
+        {
+          name: "Academic",
+          value: "Academic",
+        },
+        {
+          name: "General",
+          value: "General",
+        },
+      ],
+      level: [
+        {
+          name: "A1 Beginner(Basic User)",
+          value: "A1",
+        },
+        {
+          name: "A2 Elementary (Basic User)",
+          value: "A2",
+        },
+        {
+          name: "B1 Intermediat (Independent User)",
+          value: "B1",
+        },
+        {
+          name: "B2 Upper Intermediate (Independent User)",
+          value: "B2",
+        },
+        {
+          name: "C1 Advanced (Proficient User)",
+          value: "C1",
+        },
+        {
+          name: "C2 Proficient (Mastery)",
+          value: "C2",
+        },
+      ],
+    },
+  },
+};

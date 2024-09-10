@@ -66,7 +66,7 @@ const NavBar = ({ session }) => {
                   {/* Name & Chevron  */}
                   <div
                     tabIndex={5}
-                    className="flex hover:cursor-pointer w-full px-2 gap-x-4 before:content-[''] before:w-full before:absolute relative before:h-[45px] before:right-0 before:px-8 before:z-[-1] hover:before:z-[50]"
+                    className="flex hover:cursor-pointer w-full px-2 gap-x-4"
                   >
                     <p className="">{menu.title}</p>
                     <Image
@@ -79,7 +79,7 @@ const NavBar = ({ session }) => {
                   </div>
 
                   {/* Menu list for classes */}
-                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2 flex flex-col h-0 group-hover:w-[400px] group-hover:h-auto transition-all shadow-xl delay-100 overflow-hidden group-hover:border-2">
+                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2  flex-col h-0 group-hover:w-[400px] group-hover:h-auto transition-all shadow-xl delay-100 hidden group-hover:flex group-hover:border-2 before:h-[50px] before:w-[8rem] before:top-0 before:-translate-y-1/2 before:absolute before:left-1/2 before:-translate-x-1/2 z-10 before:content-[''] hover:before:z-[-5] before:bg-transparent">
                     <LargeScreenNavLink
                       subTitle={menu.english.subTitle}
                       description={menu.english.description}

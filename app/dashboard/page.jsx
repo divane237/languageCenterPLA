@@ -3,29 +3,37 @@ import { getStudentData } from "@/lib/actions/user";
 
 const Dashboard = async () => {
   const result = await getStudentData();
+
   const { student, error } = JSON.parse(result);
+  console.log(student);
+  const { firstName, id, user_id: userId, avatarImage } = student;
 
   if (error) {
     console.log(error);
-    return <p>Error loading user data</p>;
+    return <p>Please reload the page or check your internet connection.</p>;
   }
 
   return (
     <div className="min-h-[92dvh] w-full md:min-h-[100%]  text-white/80 bg-black ">
       {/* First section is profile picture */}
 
-      <div className="h-[22%] flex border-b-[1.55px] border-b-gray-400 px-2">
+      <div className="h-[22%] flex border-b-[1.55px] border-b-gray-400">
         <div className="basis-1/3 relative">
-          <div className="h-[8rem] w-[8rem] bg-sky-400 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hover:bg-sky-400/70 hover:cursor-pointer flex items-center justify-center mx-r">
-            <ImageUpload result={result} />
+          <div className="h-[6rem] w-[6rem] md:h-[7.5rem] md:w-[7.5rem] bg-sky-400 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hover:bg-sky-400/70 hover:cursor-pointer flex items-center justify-center">
+            <ImageUpload
+              firstName={firstName}
+              id={id}
+              userId={userId}
+              avatarImage={avatarImage}
+            />
           </div>
         </div>
 
         <div className="basis-2/3 text-center leading-normal place-content-center">
-          <p className="md:text-2xl font-mono font-semibold text-lg lg:text-4xl">
+          <p className="md:text-2xl font-mono font-semibold text-base lg:text-4xl">
             Welcome {`${student.firstName} ${student.lastName}`}
           </p>
-          <span className="italic text-xs md:text-sm lg:text-base">
+          <span className="italic text-[0.5rem] md:text-sm lg:text-base">
             Please contact Administration for any request on personal student
             info modification.
           </span>

@@ -27,7 +27,9 @@ const SignOut = ({ label = "123example@email.com" }) => {
       </Button>
       <div>
         <p>Logout</p>
-        <span className="text-[0.6rem] font-medium font-serif">{label}</span>
+        <span className="sm:text-[0.6rem] lg:text-xs font-medium font-serif">
+          {label}
+        </span>
       </div>
     </form>
   );

@@ -18,6 +18,7 @@ const CustomFormSelectInput = ({
   control,
   name,
   label,
+  placeholder = "Default place holder",
   options = [{ name: "", value: "" }],
 }) => {
   return (
@@ -26,7 +27,7 @@ const CustomFormSelectInput = ({
       name={name}
       render={({ field }) => (
         <FormItem className="min-w-[100px] px-4 py-1">
-          <FormLabel className="text-xs sm:text-sm font-semibold whitespace-nowrap max-sm:text-center max-sm:block">
+          <FormLabel className="text-xs md:text-sm font-semibold whitespace-nowrap max-sm:text-center max-sm:block">
             {label}
           </FormLabel>
           <Select
@@ -35,8 +36,8 @@ const CustomFormSelectInput = ({
             className="bg-blue-400"
           >
             <FormControl>
-              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-xs sm:text-sm">
-                <SelectValue placeholder="Select a document" />
+              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-xs md:text-sm text-black/70">
+                <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
             <SelectContent className="">
