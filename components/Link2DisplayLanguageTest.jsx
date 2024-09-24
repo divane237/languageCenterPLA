@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+
 const Link2DisplayLanguageTest = ({
   title = "Title",
   image = "/images/english-ielts-logo.png",
@@ -7,11 +7,7 @@ const Link2DisplayLanguageTest = ({
   route = "/",
 }) => {
   return (
-    <Link
-      href={route}
-      className="basis-1/5 py-2 px-1 flex flex-nowrap gap-2 border-[0.5px41
-        ] bg-white/50 border-[0.5px] hover:bg-white/30 rounded-md"
-    >
+    <section className="">
       <div
         className={`w-[40%]`}
         style={{
@@ -27,7 +23,7 @@ const Link2DisplayLanguageTest = ({
         <h1 className="font-semibold py-1 text-sm">{title}</h1>
         <p className="text-xs">{description}</p>
       </div>
-    </Link>
+    </section>
   );
 };
 

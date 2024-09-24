@@ -5,7 +5,7 @@ const MobileNavLink = ({ route, imageSource, subTitle }) => {
   return (
     <Link
       href={route}
-      className="flex gap-x-3 justify-center items-center hover:bg-colorful-700/60 rounded-sm"
+      className="flex gap-x-3 justify-center items-center hover:bg-colorful-700/60 rounded-sm focus:outline-none focus:border-none focus:ring-2"
     >
       <p className="text-xs">{subTitle}</p>
       <Image

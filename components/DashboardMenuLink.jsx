@@ -12,7 +12,7 @@ const DashboardMenuLink = ({
   return (
     <Link
       className={cn(
-        "py-4 px-5 flex text-sm lg:text-lg",
+        "py-4 px-5 flex text-sm lg:text-lg focus:outline-none focus:border-none focus:ring-2 my-[0.1rem]",
         !isActive && "hover:bg-sky-400",
         className
       )}

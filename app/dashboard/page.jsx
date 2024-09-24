@@ -5,8 +5,6 @@ const Dashboard = async () => {
   const result = await getStudentData();
 
   const { student, error } = JSON.parse(result);
-  console.log(student);
-  const { firstName, id, user_id: userId, avatarImage } = student;
 
   if (error) {
     console.log(error);
@@ -21,10 +19,10 @@ const Dashboard = async () => {
         <div className="basis-1/3 relative">
           <div className="h-[6rem] w-[6rem] md:h-[7.5rem] md:w-[7.5rem] bg-sky-400 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hover:bg-sky-400/70 hover:cursor-pointer flex items-center justify-center">
             <ImageUpload
-              firstName={firstName}
-              id={id}
-              userId={userId}
-              avatarImage={avatarImage}
+              firstName={student?.firstName}
+              id={student?.id}
+              userId={student?.user_id}
+              avatarImage={student?.avatarImage}
             />
           </div>
         </div>

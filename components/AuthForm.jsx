@@ -42,6 +42,7 @@ const AuthForm = ({ type }) => {
   // 2. Define a submit handler.
   const onSubmit = (data) => {
     // ✅ This will be type-safe and validated.
+    console.log(data);
 
     setAuthError((prevError) => (prevError = ""));
 

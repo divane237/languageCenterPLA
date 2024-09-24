@@ -1,10 +1,10 @@
-import FormTest from "@/components/FormTest";
+import AddSection from "@/components/AddSection";
 import React from "react";
-const HomePage = () => {
+const HomePage = async () => {
   return (
     <div>
       Home
-      <FormTest />
+      <AddSection />
     </div>
   );
 };

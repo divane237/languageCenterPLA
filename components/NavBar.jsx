@@ -13,7 +13,6 @@ import LargeScreenNavLink from "./LargeScreenNavLink";
 import { User, User2 } from "lucide-react";
 
 const NavBar = ({ session }) => {
-  console.log(session);
   const pathname = usePathname();
   let isActive;
 
@@ -79,7 +78,7 @@ const NavBar = ({ session }) => {
                   </div>
 
                   {/* Menu list for classes */}
-                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2  flex-col h-0 group-hover:w-[400px] group-hover:h-auto transition-all shadow-xl delay-100 hidden group-hover:flex group-hover:border-2 before:h-[50px] before:w-[8rem] before:top-0 before:-translate-y-1/2 before:absolute before:left-1/2 before:-translate-x-1/2 z-10 before:content-[''] hover:before:z-[-5] before:bg-transparent">
+                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2  flex-col h-0 group-hover:w-[400px] group-hover:h-auto shadow-xl  hidden group-hover:flex group-hover:border-2 before:h-[50px] before:w-[8rem] before:top-0 before:-translate-y-1/2 before:absolute before:left-1/2 before:-translate-x-1/2 z-10 before:content-[''] hover:before:z-[-5] before:bg-transparent bg-white">
                     <LargeScreenNavLink
                       subTitle={menu.english.subTitle}
                       description={menu.english.description}

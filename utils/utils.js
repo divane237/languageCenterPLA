@@ -54,13 +54,22 @@ export const authSchema = (type) =>
     password: z.string().min(5, { message: "At least 5 characters." }),
   });
 
+// Custom function to validate increments of 0.5
+const isValidIeltsIncrement = (value) => {
+  return (value - 5) % 0.5 === 0 && value >= 5 && value <= 9;
+};
+
 export const ieltsSchema = z.object({
-  type: z.string({ message: "Please select a specific exam" }),
-  initialLevel: z.string({ message: "Please select a level" }),
-  // currentLevel: z.string().optional(),
-  // online: z.boolean(),
-  tutor: z.string({ message: "Please select a tutor" }),
-  requiredScore: z.number({ message: "Input your required band/score!" }),
-  // bookedExam: z.boolean(),
-  examDate: z.date(),
+  method: z.string(),
+  category: z.string().min(1, { message: "Please select an exam category" }),
+  currentLevel: z
+    .string()
+    .min(1, { message: "Please choose your present a  language level" }),
+  requiredScore: z
+    .string()
+    .min(1, { message: "Please input the score you need" })
+    .max(4, { message: "Please input a valid score" }),
+
+  examDate: z.string({ message: "Please fill it out" }).date(),
+  tutors: z.string().min(2, { message: "Please select a tutor" }),
 });

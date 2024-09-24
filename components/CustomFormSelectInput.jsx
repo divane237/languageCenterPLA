@@ -33,10 +33,10 @@ const CustomFormSelectInput = ({
           <Select
             onValueChange={field.onChange}
             defaultValue={field.value}
-            className="bg-blue-400"
+            className="bg-blue-400 font-bold"
           >
             <FormControl>
-              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-xs md:text-sm text-black/70">
+              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-xs md:text-sm text-black font-semibold ">
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
@@ -45,7 +45,7 @@ const CustomFormSelectInput = ({
                 <SelectItem
                   key={option?.name}
                   value={option?.value}
-                  className="text-xs sm:text-sm"
+                  className="text-xs sm:text-sm font-bold"
                 >
                   {option?.name}
                 </SelectItem>

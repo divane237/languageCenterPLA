@@ -57,21 +57,6 @@ export const navMenu = [
   },
 ];
 
-export const options = [
-  {
-    name: "Passport",
-    value: "Passport",
-  },
-  {
-    name: "National ID",
-    value: "National ID",
-  },
-  {
-    name: "Driver's License",
-    value: "Driver License",
-  },
-];
-
 export const dashboardMenuList = [
   {
     title: "Profile",
@@ -139,7 +124,7 @@ export const englishLanguageTests = [
 export const languageExamOptions = {
   english: {
     ielts: {
-      type: [
+      category: [
         {
           name: "Academic",
           value: "Academic",
@@ -175,6 +160,49 @@ export const languageExamOptions = {
           value: "C2",
         },
       ],
+      method: [
+        {
+          name: "At Home",
+          value: "Home",
+        },
+        {
+          name: "At the center",
+          value: "Center",
+        },
+        {
+          name: "Online",
+          value: "Online",
+        },
+      ],
+      tutors: [
+        {
+          name: "Mr Divane",
+          value: "Mr Divane",
+        },
+        {
+          name: "Mrs Sandrine",
+          value: "Mrs Sandrine",
+        },
+        {
+          name: "Dr Linus Pol",
+          value: "Dr Linus Pol",
+        },
+      ],
     },
   },
 };
+
+export const options = [
+  {
+    name: "Passport",
+    value: "Passport",
+  },
+  {
+    name: "National ID",
+    value: "National ID",
+  },
+  {
+    name: "Driver's License",
+    value: "Driver License",
+  },
+];

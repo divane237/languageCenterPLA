@@ -6,7 +6,7 @@ const Logo = ({ className }) => {
   return (
     <Link
       className={cn(
-        "flex items-center justify-center gap-x-1 mr-auto px-2 hover:bg-accent focus:bg-accent focus:text-accent-foreground focus:outline-none rounded-lg font-bold text-2xl text-[#44699ad7] hover:text-[#44699ad7]",
+        "flex items-center justify-center gap-x-1 mr-auto px-2 hover:bg-accent focus:bg-accent focus:text-accent-foreground focus:outline-none rounded-lg font-bold text-2xl text-[#44699ad7] hover:text-[#44699ad7] select-none",
         className
       )}
       href="/home"
