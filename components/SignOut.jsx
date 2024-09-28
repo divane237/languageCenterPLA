@@ -18,7 +18,7 @@ const SignOut = ({ label = "123example@email.com" }) => {
     <form action={onSubmit} className="flex gap-2">
       <Button className="bg-black/5 border-2 border-white">
         {isPending ? (
-          <Loader2 className="animate-spin" />
+          <Loader2 className="animate-spin text-sky-400" />
         ) : (
           <div className="">
             <LogOut />

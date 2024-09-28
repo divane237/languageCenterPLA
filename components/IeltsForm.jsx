@@ -8,43 +8,92 @@ import { languageExamOptions } from "@/constants";
 import CustomFormSelectInput from "./CustomFormSelectInput";
 import { Button } from "./ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEnglishTest } from "@/store";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
-const IeltsForm = ({ setClientsDetail, setAddSection }) => {
+const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
   const [tutors, setTutors] = useState(
     languageExamOptions.english.ielts.tutors
   );
 
+  const setEnglishExamGoals = useEnglishTest(
+    (state) => state.setEnglishExamGoals
+  );
+
+  // console.log(test);
   const form = useForm({
     resolver: zodResolver(ieltsSchema),
     defaultValues: {
-      method: "",
+      name: test,
       category: "",
       currentLevel: "",
       requiredScore: "",
       examDate: "",
-      tutors: "",
+      tutor: "",
     },
   });
 
   // 2. Define a submit handler.
-  const onSubmit = (data) => {
-    //
-    console.log("This is the data: ", data);
-    setClientsDetail((prevClient) => [...prevClient, data]);
-    setAddSection(false);
+  const onSubmit = async (data) => {
+    const {
+      name: test_name,
+      category: test_category,
+      currentLevel: current_level,
+      examDate: exam_date,
+      requiredScore: required_score,
+      tutor: tutor_name,
+    } = data;
+
+    try {
+      const supabase = createSupabaseBrowserClient();
+
+      const {
+        data: {
+          user: { id: user_id },
+        },
+        error,
+      } = await supabase.auth.getUser();
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      const req = await supabase.from("english_test_languages").insert({
+        test_name,
+        test_category,
+        current_level,
+        exam_date,
+        required_score,
+        tutor_name,
+        user_id,
+      });
+
+      if (req.error) throw req.error;
+
+      setEnglishExamGoals(data);
+
+      setAddSection(false);
+
+      console.log("Data inserted successfully.", req.data);
+    } catch (error) {
+      console.error("Error inserting data: ", error);
+    }
   };
 
   return (
     <div className="w-full aspect-square md:aspect-video">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
-          <CustomFormSelectInput
+          <CustomInput
+            name="name"
+            label={"Test"}
             control={form.control}
-            name="method"
-            label="Where are you taking lectures"
-            options={languageExamOptions.english.ielts.method}
-            placeholder="Choose one"
+            placeholder="..."
+            disabled={true}
+            className={"bg-blue-400 font-extrabold"}
           />
+
           <CustomFormSelectInput
             control={form.control}
             name="category"
@@ -62,7 +111,7 @@ const IeltsForm = ({ setClientsDetail, setAddSection }) => {
 
           <CustomFormSelectInput
             control={form.control}
-            name="tutors"
+            name="tutor"
             label="Tutor Name"
             options={tutors}
             placeholder="Tutor Name"
@@ -87,7 +136,7 @@ const IeltsForm = ({ setClientsDetail, setAddSection }) => {
           <div className="relative h-12">
             <Button
               type="submit"
-              className="button-0 absolute left-1/2 -translate-x-1/2 text-xs sm:text-sm rounded-lg w-1/2"
+              className="button-0 absolute left-1/2 -translate-x-1/2 text-xs sm:text-sm rounded-lg w-1/2 focus:outline-none focus:border-none focus:ring-2"
             >
               Save
             </Button>

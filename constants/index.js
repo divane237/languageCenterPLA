@@ -5,10 +5,8 @@ import {
   BookOpenCheck,
   Home,
   Languages,
-  LogIn,
   Notebook,
   Settings,
-  User,
   UserRound,
 } from "lucide-react";
 
@@ -93,31 +91,19 @@ export const dashboardMenuList = [
 export const englishLanguageTests = [
   {
     title: "IELTS",
-    description:
-      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
     image: "/images/english-ielts-logo.png",
-    route: "english/ielts",
   },
   {
     title: "TOEFL",
-    description:
-      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
     image: "/images/english-toefl-logo.png",
-    route: "english/toefl",
   },
   {
     title: "CAMBRIDGE",
-    description:
-      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
     image: "/images/english-cambridge-logo.png",
-    route: "english/cambridge",
   },
   {
     title: "CELPIP",
-    description:
-      "You can customize various parameters related to your IELTS exam, as well as your initial language level when joining the center. Additionally, you'll be able to track and review any results or updates shared directly by the test center, ensuring you stay informed about your performance and progress.",
     image: "/images/english-celpip-logo.png",
-    route: "english/celpip",
   },
 ];
 

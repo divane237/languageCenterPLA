@@ -60,7 +60,7 @@ const isValidIeltsIncrement = (value) => {
 };
 
 export const ieltsSchema = z.object({
-  method: z.string(),
+  name: z.string(),
   category: z.string().min(1, { message: "Please select an exam category" }),
   currentLevel: z
     .string()
@@ -71,5 +71,5 @@ export const ieltsSchema = z.object({
     .max(4, { message: "Please input a valid score" }),
 
   examDate: z.string({ message: "Please fill it out" }).date(),
-  tutors: z.string().min(2, { message: "Please select a tutor" }),
+  tutor: z.string().min(2, { message: "Please select a tutor" }),
 });

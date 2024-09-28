@@ -32,19 +32,16 @@ const MobileDashboard = ({ children }) => {
       firstElement.focus();
 
       const handleTabKey = (e) => {
+        if (e.key === "Escape") {
+          handleCloseMenu();
+        }
         if (e.key === "Tab") {
-          if (e.shiftKey) {
-            // If Shift + Tab is pressed, and focus is on the first element, move focus to the last element
-            if (document.activeElement === firstElement) {
-              e.preventDefault();
-              lastElement.focus();
-            }
-          } else {
-            // If Tab is pressed, and focus is on the last element, move focus to the first element
-            if (document.activeElement === lastElement) {
-              e.preventDefault();
-              firstElement.focus();
-            }
+          if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
           }
         }
       };

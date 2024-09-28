@@ -27,16 +27,16 @@ const CustomFormSelectInput = ({
       name={name}
       render={({ field }) => (
         <FormItem className="min-w-[100px] px-4 py-1">
-          <FormLabel className="text-xs md:text-sm font-semibold whitespace-nowrap max-sm:text-center max-sm:block">
+          <FormLabel className="text-sm font-semibold whitespace-nowrap max-sm:text-center max-sm:block">
             {label}
           </FormLabel>
           <Select
             onValueChange={field.onChange}
             defaultValue={field.value}
-            className="bg-blue-400 font-bold"
+            className="bg-blue-400 font-normal"
           >
             <FormControl>
-              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-xs md:text-sm text-black font-semibold ">
+              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-sm text-black font-normal ">
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
@@ -45,7 +45,7 @@ const CustomFormSelectInput = ({
                 <SelectItem
                   key={option?.name}
                   value={option?.value}
-                  className="text-xs sm:text-sm font-bold"
+                  className="text-sm font-normal"
                 >
                   {option?.name}
                 </SelectItem>
