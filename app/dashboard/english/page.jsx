@@ -5,7 +5,7 @@ import { englishLanguageTests } from "@/constants";
 import React from "react";
 const English = () => {
   return (
-    <section className="w-full h-[100dvh] md:w-[80%] lg:w-full bg-black text-white/90 p-2 divide-y">
+    <section className="w-full h-[100dvh] md:w-[80%] lg:w-full bg-black/80 text-white/90 p-2 divide-y overflow-y-scroll">
       {/* Section showing the various language tests */}
 
       <ul className="flex justify-start gap-x-5 sm:justify-around px-2 mb-2 md:mb-3 py-1">

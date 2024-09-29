@@ -10,11 +10,14 @@ import { Button } from "./ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEnglishTest } from "@/store";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { Loader2 } from "lucide-react";
 
 const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
   const [tutors, setTutors] = useState(
     languageExamOptions.english.ielts.tutors
   );
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(true);
 
   const setEnglishExamGoals = useEnglishTest(
     (state) => state.setEnglishExamGoals
@@ -45,6 +48,9 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
     } = data;
 
     try {
+      setError(false);
+      setIsLoading(true);
+      //
       const supabase = createSupabaseBrowserClient();
 
       const {
@@ -54,35 +60,41 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
         error,
       } = await supabase.auth.getUser();
 
-      if (error) {
-        console.log(error);
-        return;
-      }
+      if (error) throw error;
 
-      const req = await supabase.from("english_test_languages").insert({
-        test_name,
-        test_category,
-        current_level,
-        exam_date,
-        required_score,
-        tutor_name,
-        user_id,
-      });
+      const { error: insertError } = await supabase
+        .from("english_test_languages")
+        .insert({
+          test_name,
+          test_category,
+          current_level,
+          exam_date,
+          required_score,
+          tutor_name,
+          user_id,
+        });
 
-      if (req.error) throw req.error;
+      if (insertError) throw insertError;
+
+      setIsLoading(false);
 
       setEnglishExamGoals(data);
 
       setAddSection(false);
-
-      console.log("Data inserted successfully.", req.data);
     } catch (error) {
       console.error("Error inserting data: ", error);
+      setError(true);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="w-full aspect-square md:aspect-video">
+      {error && (
+        <p className="text-red-600 w-full text-center font-semibold text-xs lg:text-sm">
+          Failed to add
+        </p>
+      )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
           <CustomInput
@@ -137,8 +149,13 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
             <Button
               type="submit"
               className="button-0 absolute left-1/2 -translate-x-1/2 text-xs sm:text-sm rounded-lg w-1/2 focus:outline-none focus:border-none focus:ring-2"
+              disabled={isLoading}
             >
-              Save
+              {isLoading ? (
+                <Loader2 className="animate-spin text-sky-400" />
+              ) : (
+                "Save"
+              )}
             </Button>
           </div>
         </form>
