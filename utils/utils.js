@@ -33,12 +33,24 @@ export const authSchema = (type) =>
     firstName:
       type === "sign-in"
         ? z.string().optional()
-        : z.string().min(3, { message: "Must be at least 3 character" }),
+        : z
+            .string()
+            .min(3, { message: "Must be at least 3 character" })
+            .max(200, { message: "Max. capacity" }),
     lastName:
       type === "sign-in"
         ? z.string().optional()
-        : z.string().min(3, { message: "Must be at least 3 character" }),
-    address: type === "sign-in" ? z.string().optional() : z.string().max(60),
+        : z
+            .string()
+            .min(3, { message: "Must be at least 3 character" })
+            .max(200, { message: "Max. capacity" }),
+    address:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string()
+            .min(3, { message: "Must be at least 3 character" })
+            .max(60, { message: "At most 60 characters." }),
     dateOfBirth: type === "sign-in" ? z.string().optional() : z.string().date(),
     identificationDocument:
       type === "sign-in"
@@ -53,11 +65,6 @@ export const authSchema = (type) =>
     email: z.string().email({ message: "Invalid email address." }),
     password: z.string().min(5, { message: "At least 5 characters." }),
   });
-
-// Custom function to validate increments of 0.5
-const isValidIeltsIncrement = (value) => {
-  return (value - 5) % 0.5 === 0 && value >= 5 && value <= 9;
-};
 
 export const ieltsSchema = z.object({
   name: z.string(),

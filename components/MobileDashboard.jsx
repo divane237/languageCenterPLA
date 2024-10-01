@@ -25,6 +25,7 @@ const MobileDashboard = ({ children }) => {
       const focusableElements = modalRef.current.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
+
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -75,6 +76,7 @@ const MobileDashboard = ({ children }) => {
       previouslyFocusedElementRef.current.focus();
     }
   };
+
   return (
     <div className="md:hidden flex items-center justify-end z-20 relative bg-black/20 h-[8dvh]">
       {/* LOGO */}

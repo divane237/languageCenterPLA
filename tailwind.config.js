@@ -74,8 +74,8 @@ module.exports = {
         },
       },
       animation: {
-        menuEntry: "menu-entry 0.6s ease-in-out 0.2s forwards",
-        menuExit: "menu-exit 0.6s ease-in-out forwards",
+        menuEntry: "menu-entry 0.4s ease-in-out 0.1s forwards",
+        menuExit: "menu-exit 0.4s ease-in-out forwards",
       },
     },
   },

@@ -17,7 +17,7 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
     languageExamOptions.english.ielts.tutors
   );
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
 
   const setEnglishExamGoals = useEnglishTest(
     (state) => state.setEnglishExamGoals
@@ -63,7 +63,7 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
       if (error) throw error;
 
       const { error: insertError } = await supabase
-        .from("english_test_languages")
+        .from("english_test_goals")
         .insert({
           test_name,
           test_category,

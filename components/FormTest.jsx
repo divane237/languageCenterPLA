@@ -29,7 +29,7 @@ const FormTest = () => {
   // 2. Define a submit handler.
   const onSubmit = (data) => {
     //
-    console.log("This is the data: ", data);
+    console.log("This is the data: From form test", data);
   };
 
   return (

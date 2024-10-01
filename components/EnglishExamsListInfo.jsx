@@ -1,13 +1,12 @@
 "use client";
 
 import { useEnglishTest } from "@/store";
-import { Loader2, Trash2 } from "lucide-react";
+import { Edit, Loader2, Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 const EnglishExamsListInfo = () => {
-  // const englishExamGoals = useEnglishTest((state) => state.englishExamGoals);
-  const [buttonLoading, setButtonLoading] = useState(false);
+  // const [buttonLoading, setButtonLoading] = useState(false);
 
   const {
     isLoading,
@@ -27,13 +26,14 @@ const EnglishExamsListInfo = () => {
     }))
   );
 
+  console.log("isLoading state is: ", isLoading, "Loading state is: ", loading);
+
   // fetch();
   useEffect(() => {
     getEnglishExamGoals();
   }, [getEnglishExamGoals]);
 
   function handleDeleteButton(e, goalId) {
-    console.log(e.currentTarget);
     //
     deleteEnglishExamGoals(goalId);
   }
@@ -53,30 +53,48 @@ const EnglishExamsListInfo = () => {
         ) : (
           englishExamGoals.map((goal, i) => (
             <div
-              key={`${goal.test_name} ${i}`}
+              key={`${goal.name} ${i}`}
               className={`border-2 px-2 py-1 m-1 grid grid-cols-2`}
             >
               <h2 className="font-semibold text-sm">
-                {goal.test_name || goal.name}
+                {goal.name || goal.test_name}
               </h2>
               <p className=" font-mono text-green-500 font-light justify-self-end">
-                {goal.required_score || goal.requiredScore}
+                {goal.requiredScore || goal.required_score}
               </p>
 
-              <h2 className="text-sm">{goal.test_category || goal.category}</h2>
+              <h2 className="text-sm">{goal.category || goal.test_category}</h2>
               <p className="font-mono font-light justify-self-end">
-                {goal.exam_date || goal.examDate}
+                {goal.examDate || goal.exam_date}
               </p>
 
-              <h2 className="text-sm">{goal.tutor_name || goal.tutor}</h2>
+              <h2 className="text-sm">{goal.tutor || goal.tutor_name}</h2>
               <p className="font-mono font-light text-sky-500 justify-self-end">
-                {goal.current_level || goal.currentLevel}
+                {goal.currentLevel || goal.current_level}
               </p>
 
+              {/* Edit button */}
               <button
-                className="text-red-600 text-sm col-span-2 justify-self-center px-2 py-1 rounded-full hover:text-red-600/90"
+                className="text-sky-600 text-sm justify-self-center px-2 py-1 rounded-full hover:text-sky-600/90"
                 onClick={(e) => {
-                  // console.log(goal.id)
+                  //
+                }}
+                id={goal.id}
+              >
+                {loading ? (
+                  <Loader2
+                    className="animate-spin text-sky-400"
+                    size={30}
+                  ></Loader2>
+                ) : (
+                  <Edit size={30} />
+                )}
+              </button>
+
+              {/* Delete button */}
+              <button
+                className="text-red-600 text-sm justify-self-center px-2 py-1 rounded-full hover:text-red-600/90"
+                onClick={(e) => {
                   handleDeleteButton(e, goal.id);
                 }}
                 id={goal.id}

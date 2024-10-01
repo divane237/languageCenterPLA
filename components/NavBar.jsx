@@ -10,7 +10,7 @@ import MobileMenu from "./MobileMenu";
 import Image from "next/image";
 import { cn } from "@/utils/utils";
 import LargeScreenNavLink from "./LargeScreenNavLink";
-import { User, User2 } from "lucide-react";
+import { User } from "lucide-react";
 
 const NavBar = ({ session }) => {
   const pathname = usePathname();
@@ -63,10 +63,7 @@ const NavBar = ({ session }) => {
                   )}
                 >
                   {/* Name & Chevron  */}
-                  <div
-                    tabIndex={5}
-                    className="flex hover:cursor-pointer w-full px-2 gap-x-4"
-                  >
+                  <section className="flex hover:cursor-pointer w-full px-2 gap-x-4">
                     <p className="">{menu.title}</p>
                     <Image
                       src="/icons/chevron-up.svg"
@@ -75,10 +72,13 @@ const NavBar = ({ session }) => {
                       alt="chevron-up"
                       className="group-hover:rotate-180 delay-100 w-5 h-auto"
                     />
-                  </div>
+                  </section>
 
                   {/* Menu list for classes */}
-                  <div className="rounded-md absolute mt-4 right-1/2 translate-x-1/2  flex-col h-0 group-hover:w-[400px] group-hover:h-auto shadow-xl  hidden group-hover:flex group-hover:border-2 before:h-[50px] before:w-[8rem] before:top-0 before:-translate-y-1/2 before:absolute before:left-1/2 before:-translate-x-1/2 z-10 before:content-[''] hover:before:z-[-5] before:bg-transparent bg-white">
+                  <section
+                    className="rounded-md absolute mt-4 right-1/2 translate-x-1/2  flex-col h-0 group-hover:w-[400px] group-hover:h-auto shadow-xl  hidden group-hover:flex group-hover:border-2 before:h-[50px] before:w-[8rem] before:top-0 before:-translate-y-1/2 before:absolute before:left-1/2 before:-translate-x-1/2 z-10 before:content-[''] hover:before:z-[-5] before:bg-transparent bg-white"
+                    // tabIndex="0"
+                  >
                     <LargeScreenNavLink
                       subTitle={menu.english.subTitle}
                       description={menu.english.description}
@@ -97,7 +97,7 @@ const NavBar = ({ session }) => {
                       route={menu.german.route}
                       image={menu.german.imageSource}
                     />
-                  </div>
+                  </section>
                 </div>
               )}
             </li>

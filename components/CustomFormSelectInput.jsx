@@ -20,6 +20,7 @@ const CustomFormSelectInput = ({
   label,
   placeholder = "Default place holder",
   options = [{ name: "", value: "" }],
+  disabled = false,
 }) => {
   return (
     <FormField
@@ -36,7 +37,10 @@ const CustomFormSelectInput = ({
             className="bg-blue-400 font-normal"
           >
             <FormControl>
-              <SelectTrigger className="focus:ring-2 rounded-xl transition-all duration-200 text-sm text-black font-normal ">
+              <SelectTrigger
+                className="focus:ring-2 rounded-xl transition-all duration-200 text-sm text-black font-normal"
+                disabled={disabled}
+              >
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>

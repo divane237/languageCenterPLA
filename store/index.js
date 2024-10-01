@@ -1,3 +1,4 @@
+import { getStudentData } from "@/lib/actions/user";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { create } from "zustand";
 
@@ -6,7 +7,7 @@ import { create } from "zustand";
 export const useEnglishTest = create((set, get) => ({
   englishExamGoals: [],
   error: null,
-  isLoading: false,
+  isLoading: true,
   loading: false,
   deletedItem: null,
 
@@ -20,7 +21,7 @@ export const useEnglishTest = create((set, get) => ({
       set({ loading: true, error: null });
       const supabase = createSupabaseBrowserClient();
       const { error } = await supabase
-        .from("english_test_languages")
+        .from("english_test_goals")
         .delete()
         .eq("id", itemId);
 
@@ -54,8 +55,10 @@ export const useEnglishTest = create((set, get) => ({
       if (authError) throw authError;
 
       const { data, error: selectError } = await supabase
-        .from("english_test_languages")
-        .select("*")
+        .from("english_test_goals")
+        .select(
+          "id, test_name, test_category, exam_date, current_level, required_score, tutor_name"
+        )
         .eq("user_id", user_id);
 
       if (selectError) throw selectError;
@@ -64,6 +67,30 @@ export const useEnglishTest = create((set, get) => ({
     } catch (err) {
       console.log(err);
       set({ error: err.message, isLoading: false });
+    }
+  },
+}));
+
+export const useStudentInfo = create((set, get) => ({
+  student: null,
+  error: null,
+  getStudentInfo: async () => {
+    //
+    try {
+      const response = await getStudentData();
+
+      const { student, error, message } = JSON.parse(response);
+
+      if (error) {
+        set({ error: error, student: null });
+      } else {
+        set({ student: student, error: null });
+      }
+
+      //
+    } catch (err) {
+      //
+      set({ error: "An erro occurred while fetching sudent info." });
     }
   },
 }));

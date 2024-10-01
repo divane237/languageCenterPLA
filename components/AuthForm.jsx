@@ -42,24 +42,22 @@ const AuthForm = ({ type }) => {
   // 2. Define a submit handler.
   const onSubmit = (data) => {
     // ✅ This will be type-safe and validated.
-    console.log(data);
 
-    setAuthError((prevError) => (prevError = ""));
+    setAuthError("");
 
     startTransition(async () => {
       // Sign Up
 
       if (type === "sign-up") {
-        const result = await signUpNewUser(data);
-        console.log(result);
+        try {
+          const result = await signUpNewUser(data);
 
-        const { error } = JSON.parse(result);
+          if (result === undefined) return;
 
-        if (error) {
-          console.log(error.message);
-          setAuthError(error);
-        } else {
-          authRoute.push("/dashboard");
+          const { error } = JSON.parse(result);
+          if (error) throw error;
+        } catch (error) {
+          setAuthError("Failed");
         }
       }
 
@@ -67,10 +65,12 @@ const AuthForm = ({ type }) => {
 
       if (type === "sign-in") {
         const result = await LoginWithEmail(data);
-        console.log(result);
+        const { error, message: errorMessage } = JSON.parse(result);
 
-        setAuthError((prevError) => (prevError = result));
-        result === "Email or password is incorrect" && form.reset();
+        if (error) {
+          setAuthError(errorMessage);
+          errorMessage === "Invalid email or password" && form.reset();
+        }
       }
     });
   };
@@ -126,6 +126,7 @@ const AuthForm = ({ type }) => {
                   label="Identification"
                   options={options}
                   placeholder="Select a document"
+                  disabled={isPending}
                 />
                 <CustomInput
                   control={form.control}
