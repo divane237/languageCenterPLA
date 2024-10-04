@@ -2,12 +2,10 @@
 
 import { useEnglishTest } from "@/store";
 import { Edit, Loader2, Trash2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 const EnglishExamsListInfo = () => {
-  // const [buttonLoading, setButtonLoading] = useState(false);
-
   const {
     isLoading,
     loading,
@@ -25,8 +23,6 @@ const EnglishExamsListInfo = () => {
       getEnglishExamGoals: state.getEnglishExamGoals,
     }))
   );
-
-  console.log("isLoading state is: ", isLoading, "Loading state is: ", loading);
 
   // fetch();
   useEffect(() => {

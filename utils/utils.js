@@ -80,3 +80,11 @@ export const ieltsSchema = z.object({
   examDate: z.string({ message: "Please fill it out" }).date(),
   tutor: z.string().min(2, { message: "Please select a tutor" }),
 });
+
+export const personalAddress = z.object({
+  address: z.string(),
+  newAddress: z
+    .string()
+    .min(3, { message: "Too short" })
+    .max(250, { message: "Too long" }),
+});

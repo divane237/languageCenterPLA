@@ -7,14 +7,25 @@ import { cn } from "@/utils/utils";
 import MobileNavLink from "./MobileNavLink";
 import { LogIn, User } from "lucide-react";
 import Footer from "./Footer";
+import { useSession } from "@/store";
+import { useShallow } from "zustand/react/shallow";
 
-const MobileMenu = ({ session }) => {
+const MobileMenu = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [toggleLinks, setToggleLinks] = useState(true);
   const modalRef = useRef(null);
 
-  const previouslyFocusedElementRef = useRef(null);
+  const { session, getCurrentSession } = useSession(
+    useShallow((state) => ({
+      session: state.session,
+      getCurrentSession: state.getCurrentSession,
+    }))
+  );
+
+  useEffect(() => {
+    getCurrentSession();
+  }, [getCurrentSession]);
 
   const pathname = usePathname();
   let isActive;
@@ -22,7 +33,7 @@ const MobileMenu = ({ session }) => {
   // Function to open the component and disable background scroll
   const handleOpenMenu = () => {
     // Store the currently focused element
-    previouslyFocusedElementRef.current = document.activeElement;
+
     setAnimation(true);
     setMobileMenu(true);
     document.body.classList.add("overflow-hidden"); // Disable background scroll
@@ -34,11 +45,6 @@ const MobileMenu = ({ session }) => {
 
     // setMobileMenu(false);
     document.body.classList.remove("overflow-hidden"); // Re-enable background scroll
-
-    //Restore focus to the previously focused element
-    if (previouslyFocusedElementRef.current) {
-      previouslyFocusedElementRef.current.focus();
-    }
   };
 
   // Focus trapping logic

@@ -1,4 +1,4 @@
-import { getStudentData } from "@/lib/actions/user";
+import { getStudentData, getUserSession } from "@/lib/actions/user";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { create } from "zustand";
 
@@ -92,5 +92,25 @@ export const useStudentInfo = create((set, get) => ({
       //
       set({ error: "An erro occurred while fetching sudent info." });
     }
+  },
+}));
+
+export const useSession = create((set) => ({
+  session: false,
+  getCurrentSession: async () => {
+    try {
+      const response = await getUserSession();
+      const { session, error } = JSON.parse(response);
+
+      if (error) throw error;
+
+      if (session === true) set({ session: true });
+
+      if (session === false) set({ session: false });
+    } catch (error) {
+      set({ session: false });
+      //
+    }
+    //
   },
 }));

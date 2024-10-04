@@ -175,6 +175,50 @@ export const languageExamOptions = {
         },
       ],
     },
+    cambridge: {
+      category: [
+        {
+          name: "First Certificate in English (FCE)",
+          value: "FCE",
+        },
+        {
+          name: "Certificate in Advanced English (CAE)",
+          value: "CAE",
+        },
+        {
+          name: "Certificate of Proficiency (CPE)",
+          value: "CPE",
+        },
+        {
+          name: "Business English Certificate (BEC)",
+          value: "BEC",
+        },
+      ],
+    },
+    toefl: {
+      category: [
+        {
+          name: "Internet-based Test",
+          value: "Internet-based Test (iBT)",
+        },
+        {
+          name: "Essentials",
+          value: "Essentials",
+        },
+      ],
+    },
+    celpip: {
+      category: [
+        {
+          name: "General",
+          value: "General",
+        },
+        {
+          name: "General LS",
+          value: "General LS",
+        },
+      ],
+    },
   },
 };
 

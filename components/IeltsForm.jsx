@@ -23,7 +23,17 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
     (state) => state.setEnglishExamGoals
   );
 
-  // console.log(test);
+  const examCategoryOptions =
+    test === "IELTS"
+      ? languageExamOptions.english.ielts.category
+      : test === "TOEFL"
+      ? languageExamOptions.english.toefl.category
+      : test === "CAMBRIDGE"
+      ? languageExamOptions.english.cambridge.category
+      : test === "CELPIP"
+      ? languageExamOptions.english.celpip.category
+      : "";
+
   const form = useForm({
     resolver: zodResolver(ieltsSchema),
     defaultValues: {
@@ -110,7 +120,7 @@ const IeltsForm = ({ setAddSection, test = "IELTS" }) => {
             control={form.control}
             name="category"
             label="Exam Type"
-            options={languageExamOptions.english.ielts.category}
+            options={examCategoryOptions}
             placeholder="Select the exam type"
           />
           <CustomFormSelectInput

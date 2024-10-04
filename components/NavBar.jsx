@@ -1,5 +1,5 @@
 "use client";
-import * as React from "react";
+import React, { useEffect } from "react";
 import Logo from "./Logo";
 
 import { navMenu } from "@/constants";
@@ -11,8 +11,21 @@ import Image from "next/image";
 import { cn } from "@/utils/utils";
 import LargeScreenNavLink from "./LargeScreenNavLink";
 import { User } from "lucide-react";
+import { useSession } from "@/store";
+import { useShallow } from "zustand/react/shallow";
 
-const NavBar = ({ session }) => {
+const NavBar = () => {
+  const { session, getCurrentSession } = useSession(
+    useShallow((state) => ({
+      session: state.session,
+      getCurrentSession: state.getCurrentSession,
+    }))
+  );
+
+  useEffect(() => {
+    getCurrentSession();
+  }, [getCurrentSession]);
+
   const pathname = usePathname();
   let isActive;
 
@@ -128,7 +141,7 @@ const NavBar = ({ session }) => {
       {/* End of MENU | CLASSES | ABOUT nav links */}
 
       {/* Mobile Menu */}
-      <MobileMenu session={session} />
+      <MobileMenu />
     </div>
   );
 };
