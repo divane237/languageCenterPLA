@@ -6,6 +6,8 @@ import React, { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 
 const EnglishExamsListInfo = () => {
+  //
+
   const {
     isLoading,
     loading,
@@ -76,6 +78,7 @@ const EnglishExamsListInfo = () => {
                   //
                 }}
                 id={goal.id}
+                disabled={loading}
               >
                 {loading ? (
                   <Loader2
@@ -94,6 +97,7 @@ const EnglishExamsListInfo = () => {
                   handleDeleteButton(e, goal.id);
                 }}
                 id={goal.id}
+                disabled={loading}
               >
                 {loading ? (
                   <Loader2

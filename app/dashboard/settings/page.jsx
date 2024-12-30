@@ -1,5 +1,7 @@
 import DeleteAccountSection from "@/components/DeleteAccountSection";
 import UpdateAddress from "@/components/UpdateAddress";
+import UpdateEmail from "@/components/UpdateEmail";
+import UpdatePassword from "@/components/UpdatePassword";
 import { getStudentData } from "@/lib/actions/user";
 import React from "react";
 const Settings = async () => {
@@ -14,6 +16,14 @@ const Settings = async () => {
       </p>
       {/* Change Address */}
       <UpdateAddress address={student?.address} />
+
+      {/* Change Email */}
+      <UpdateEmail />
+
+      {/* Change Password */}
+
+      <UpdatePassword />
+
       {/* Delete your account section */}
       <DeleteAccountSection />
     </div>

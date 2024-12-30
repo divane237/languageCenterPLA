@@ -30,7 +30,7 @@ const NavBar = () => {
   let isActive;
 
   return (
-    <div className="flex items-center mb-4 px-2 py-1 text-base gap-x-2 border-b-2 border-colorful-600 shadow-md">
+    <div className="flex items-center mb-1 px-2 py-1 text-base gap-x-2 border-b-2 border-colorful-600 shadow-md">
       <Logo />
 
       {/* Language Buttons */}

@@ -2,7 +2,11 @@
 
 import React from "react";
 const HomePage = async () => {
-  return <div>Home</div>;
+  return (
+    <section className="border-2 border-red-500">
+      <div>Home</div>
+    </section>
+  );
 };
 
 export default HomePage;

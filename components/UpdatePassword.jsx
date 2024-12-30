@@ -1,5 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
+
 import { Button } from "./ui/button";
 import { Edit2 } from "lucide-react";
 
@@ -8,43 +10,29 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { personalAddress } from "@/utils/utils";
 import { Form } from "./ui/form";
 import CustomInput from "./CustomInput";
-import { updateAddress } from "@/lib/actions/user";
-const UpdateAddress = ({ address = "Address Not loaded, reload." }) => {
+import { changePassword } from "@/lib/actions/user";
+const UpdatePassword = () => {
   const [displayDialogueBox, setDisplayDialogueBox] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const form = useForm({
-    resolver: zodResolver(personalAddress),
+    resolver: zodResolver(changePassword),
     defaultValues: {
-      address: address,
-      newAddress: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 
   async function onSubmit(data) {
     //
     console.log("Form submitted:", data);
-
-    try {
-      setIsLoading(true);
-      const { error } = await updateAddress(data);
-
-      if (error) throw new Error(error);
-
-      setIsLoading(false);
-      setDisplayDialogueBox(false);
-      form.reset();
-    } catch (error) {
-      console.log(error.message, error);
-      setError(error);
-    }
   }
 
   return (
     <>
       <section className="px-2 flex gap-x-4 py-2 justify-center lg:justify-start">
-        <p className="text-sm lg:text-base"> Update personal address: </p>
+        <p className="text-sm lg:text-base"> Change password: </p>
         <Button
           onClick={() => {
             setDisplayDialogueBox(true);
@@ -67,16 +55,15 @@ const UpdateAddress = ({ address = "Address Not loaded, reload." }) => {
                     className="w-[350px] md:w-[40vw] aspect-square grid grid-rows-2 place-items-center"
                   >
                     <CustomInput
-                      name="address"
-                      label={"Address"}
+                      name="password"
+                      label={"Password"}
                       control={form.control}
                       placeholder="..."
                       className={"text-base font-semibold"}
-                      disabled
                     />
                     <CustomInput
-                      name="newAddress"
-                      label={"New address"}
+                      name="confirmPassword"
+                      label={"Confirm Password"}
                       control={form.control}
                       placeholder="..."
                       className={"text-base font-normal"}
@@ -116,4 +103,4 @@ const UpdateAddress = ({ address = "Address Not loaded, reload." }) => {
   );
 };
 
-export default UpdateAddress;
+export default UpdatePassword;

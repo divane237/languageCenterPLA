@@ -81,10 +81,26 @@ export const ieltsSchema = z.object({
   tutor: z.string().min(2, { message: "Please select a tutor" }),
 });
 
+//
+
 export const personalAddress = z.object({
   address: z.string(),
   newAddress: z
     .string()
     .min(3, { message: "Too short" })
     .max(250, { message: "Too long" }),
+});
+
+//
+
+export const changePassword = z.object({
+  password: z.string(),
+  confirmPassword: z
+    .string()
+    .min(3, { message: "Too short" })
+    .max(250, { message: "Too long" }),
+});
+
+export const changeEmail = z.object({
+  newEmail: z.string().email(),
 });

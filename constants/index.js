@@ -179,27 +179,27 @@ export const languageExamOptions = {
       category: [
         {
           name: "First Certificate in English (FCE)",
-          value: "FCE",
+          value: "F.C.E",
         },
         {
           name: "Certificate in Advanced English (CAE)",
-          value: "CAE",
+          value: "C.A.E",
         },
         {
           name: "Certificate of Proficiency (CPE)",
-          value: "CPE",
+          value: "C.P.E",
         },
         {
           name: "Business English Certificate (BEC)",
-          value: "BEC",
+          value: "B.E.C",
         },
       ],
     },
     toefl: {
       category: [
         {
-          name: "Internet-based Test",
-          value: "Internet-based Test (iBT)",
+          name: "Internet-Based Test",
+          value: "iBT",
         },
         {
           name: "Essentials",
