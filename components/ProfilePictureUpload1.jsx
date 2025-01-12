@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { UserRoundPen } from "lucide-react";
 
-const ImageUpload = ({ firstName, id, userId, avatarImage }) => {
+const ProfilePictureUpload1 = ({ firstName, id, userId, avatarImage }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [avatar, setAvatar] = useState(null);
   const fileUploadRef = useRef();
@@ -115,4 +115,47 @@ const ImageUpload = ({ firstName, id, userId, avatarImage }) => {
   );
 };
 
-export default ImageUpload;
+export default ProfilePictureUpload1;
+
+/*
+"use client";
+import Image from "next/image";
+import React, { useRef, useState } from "react";
+import { Button } from "./ui/button";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { UserRoundPen } from "lucide-react";
+import profile from "../public/images/upload-profile.svg";
+
+const ProfilePictureUpload = ({ firstName, id, userId, avatarImage }) => {
+  const [image, setImage] = useState("");
+  return (
+    // <div className="h-[6rem] w-[6rem] md:h-[7.5rem] md:w-[7.5rem] bg-sky-400 rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hover:bg-sky-400/70 hover:cursor-pointer flex items-center justify-center">
+    <div className="absolute border-2 border-red-400">
+      <div className="flex flex-col justify-center ">
+        <Image
+          src={profile}
+          alt=""
+          width={100}
+          height={100}
+          className="rounded-full"
+        />
+
+        <input
+          type="file"
+          accept="/image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            if (file && file.type.substring(0, 5) === "image") {
+              setImage(file);
+            } else {
+              setImage(null);
+            }
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default ProfilePictureUpload;
+*/

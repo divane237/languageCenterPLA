@@ -72,12 +72,61 @@ module.exports = {
           from: { transform: "translateX(-100%)" },
           to: { transform: "translateX(5%)" },
         },
+        caroussel: {
+          from: {
+            left: "100%",
+          },
+          to: {
+            left: "calc(var(--caroussel-item-width)*-1)",
+          },
+        },
       },
+
       animation: {
         menuEntry: "menu-entry 0.4s ease-in-out 0.1s forwards",
         menuExit: "menu-exit 0.4s ease-in-out forwards",
+        caroussel: "caroussel var(--caroussel-duration) linear infinite",
+      },
+      minHeight: {
+        caroussel: "var(--caroussel-item-width)",
+      },
+      width: {
+        //
+        item: "var(--caroussel-item-width)",
+
+        caroussel: "calc(var(--caroussel-item-width) * var(--caroussel-qty))",
+      },
+
+      height: {
+        //
+        item: "var(--caroussel-item-height)",
+
+        caroussel: "var(--caroussel-item-height)",
+      },
+
+      animationDelay: {
+        caroussel: "10s",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".animation-paused": {
+          animationPlayState: "paused",
+        },
+      });
+    },
+  ],
 };
+
+/*
+function ({ addUtilities }) {
+  addUtilities({
+    ".animation-paused": {
+      animationPlayState: "paused",
+    },
+  });
+},
+*/

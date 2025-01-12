@@ -4,6 +4,11 @@
 
 @layer base {
   :root {
+    --caroussel-item-height: 100px;
+    --caroussel-item-width: 100px;
+    --caroussel-qty: 13;
+    --caroussel-duration: 30s;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 

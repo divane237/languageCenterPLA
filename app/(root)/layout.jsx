@@ -1,12 +1,17 @@
 import NavBar from "@/components/NavBar";
-import { getUserSession } from "@/lib/actions/user";
 
 export default async function Layout({ children }) {
   return (
-    <main className="">
-      <NavBar />
+    <>
+      <main className="">
+        <NavBar />
 
-      {children}
-    </main>
+        {children}
+      </main>
+
+      <footer className="bg-black text-white p-2 w-full static bottom-0">
+        Footer
+      </footer>
+    </>
   );
 }

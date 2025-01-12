@@ -91,19 +91,61 @@ export const dashboardMenuList = [
 export const englishLanguageTests = [
   {
     title: "IELTS",
-    image: "/images/english-ielts-logo.png",
+    image: "english-ielts-logo.png",
   },
   {
     title: "TOEFL",
-    image: "/images/english-toefl-logo.png",
+    image: "english-toefl-logo.png",
   },
   {
     title: "CAMBRIDGE",
-    image: "/images/english-cambridge-logo.png",
+    image: "english-cambridge-logo.png",
   },
   {
     title: "CELPIP",
-    image: "/images/english-celpip-logo.png",
+    image: "english-celpip-logo.png",
+  },
+];
+
+export const frenchLanguageTests = [
+  {
+    title: "TCF",
+    image: "french-tcf.png",
+  },
+  {
+    title: "TEF",
+    image: "french-tef.jpg",
+  },
+  {
+    title: "DILF",
+    image: "french-dilf.jpg",
+  },
+  {
+    title: "DELF-DALF",
+    image: "french-delf-dalf.jpg",
+  },
+];
+
+export const germanLanguageTests = [
+  {
+    title: "GOETHE",
+    image: "german-goethe.jpg",
+  },
+  {
+    title: "TestDaf",
+    image: "german-TestDaf.jpg",
+  },
+  {
+    title: "TELC",
+    image: "german-telc.png",
+  },
+  {
+    title: "DSH",
+    image: "german-dsh.png",
+  },
+  {
+    title: "ÖSD",
+    image: "german-osd.png",
   },
 ];
 
