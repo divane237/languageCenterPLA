@@ -1,14 +1,14 @@
 "use server";
-
-import Link2DisplayLanguageTest from "@/components/Link2DisplayLanguageTest";
 import MovingCaroussel from "@/components/MovingCaroussel";
+import OurServices from "@/components/OurServices";
 import {
   englishLanguageTests,
   frenchLanguageTests,
   germanLanguageTests,
 } from "@/constants";
-import Image from "next/image";
+
 import React from "react";
+import OurStaff from "@/components/OurStaff";
 
 const LANGUAGE_TESTS = [
   ...englishLanguageTests,
@@ -48,14 +48,10 @@ const HomePage = async () => {
       </section>
 
       {/* Our Services */}
-      <section className="my-1 py-2 border-2 border-red-600">
-        <h2 className="text-center">Our Services</h2>
-      </section>
+      <OurServices />
 
-      {/* Content */}
-      <section className="my-1 py-2 border-2 border-red-500">
-        <h2 className="text-center">OUR STAFF</h2>
-      </section>
+      {/* Our Staff */}
+      <OurStaff />
 
       {/* Exams  */}
 

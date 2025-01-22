@@ -19,6 +19,10 @@ module.exports = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        services: "repeat(auto-fit, 400px)",
+        team: "repeat(auto-fit, 280px)",
+      },
       colors: {
         "colorful-900": "#2A2438",
         "colorful-800": "#352F44",

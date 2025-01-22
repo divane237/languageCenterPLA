@@ -278,3 +278,34 @@ export const options = [
     value: "Driver License",
   },
 ];
+
+export const administrativeStaff = [
+  {
+    postion: "Founder & Director of English Dept",
+    name: "Djoum J. Divine",
+    image: "staff-founder",
+    email: "didjoum.divine@gmail.com",
+    phone: "+237 690-345-545",
+  },
+  {
+    postion: "Secretary",
+    name: "Kems Meye C. Wel",
+    image: "staff-secretary",
+    email: "kems.wel@gmail.com",
+    phone: "+237 680-054-098",
+  },
+  {
+    postion: " Head of French Dept",
+    name: "Kamen S. Franc",
+    image: "staff-french",
+    email: "franc.kamen@gmail.com",
+    phone: "+237 654-342-934",
+  },
+  {
+    postion: "Head of German Dept",
+    name: "Donfac W. Derik",
+    image: "staff-german",
+    email: "donfac.derik@gmail.com",
+    phone: "+237 658-432-800",
+  },
+];

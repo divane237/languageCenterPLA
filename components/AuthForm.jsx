@@ -177,7 +177,7 @@ const AuthForm = ({ type }) => {
         </form>
       </Form>
 
-      <div className="text-center my-2 text-xs sm:text-sm">
+      <div className="text-center text-xs sm:text-sm pb-4">
         <p className="my-2">
           {type === "sign-in"
             ? "Don't have an account ? "
